@@ -4,9 +4,14 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'Aplikasi Pengingat Jadwal',
   webDir: 'www',
+  plugins: {
+    PushNotifications: {
+      presentationOptions: ['badge', 'sound', 'alert'],
+    },
+  },
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+  },
 };
 
 export default config;

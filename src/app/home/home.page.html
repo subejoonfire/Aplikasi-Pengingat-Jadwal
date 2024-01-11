@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="custom-list">
+    <ion-item>
+      <ion-label position="stacked">Judul Pengingat</ion-label>
+      <ion-input [(ngModel)]="Judul" placeholder="Masukkan judul"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Isi Pengingat</ion-label>
+      <ion-textarea [(ngModel)]="Isi" placeholder="Masukkan isi"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Waktu</ion-label>
+      <ion-input [(ngModel)]="Waktu" type="time"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button
+        (click)="addPengingat()"
+        class="tambah-button"
+        type="submit"
+        expand="full"
+        shape="round"
+      >
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+        {{ Button }}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Body -->
+
+  <ion-list class="custom-list">
+    <ion-item *ngFor="let row of pengingat;">
+      <ion-label>{{ row.judul }}, {{ row.isi }}, {{ row.waktu }}</ion-label>
+      <ion-button
+      expand="block"
+      fill="clear"
+      shape="round"
+      (click)="HapusPengingat(row.idpengingat)"
+      >
+        <ion-icon slot="start" name="trash"></ion-icon>
+      </ion-button>
+      <ion-button
+        expand="block"
+        fill="clear"
+        shape="round"
+        (click)="EditPengingat(row)"
+      >
+        <ion-icon slot="start" name="create"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
